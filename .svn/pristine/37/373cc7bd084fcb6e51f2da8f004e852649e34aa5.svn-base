@@ -1,0 +1,24 @@
+import java.util.Scanner;
+import java.io.*;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		 Scanner scanner = new Scanner(System.in);
+	        
+		 System.out.println("Thank you SeeFood");
+		 
+		 while(scanner.hasNextLine()){
+	        	String keyword = scanner.nextLine();
+	        	GoogleQuery gq = new GoogleQuery(keyword);
+	        	
+	        	long a = System.currentTimeMillis();
+	        	gq.query();
+	        	System.out.println("Thank you SeeFood");
+	        	long b = System.currentTimeMillis();
+	            System.out.print("Search time : " + (b - a) + " milliseconds");
+	     }
+	     scanner.close();
+    }
+}

@@ -1,0 +1,29 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
+
+public class WebPage {
+    public String URL;
+    public String name;
+    public WordCounter counter;
+    public double score;
+    public String nam;
+    
+    public WebPage(String URL, String name){
+    	this.URL = URL;
+    	this.name = name;
+    	this.counter = new WordCounter(URL);
+    }
+    
+    public double setScore(ArrayList<Keyword> keywords) throws IOException{
+    	score = 0;
+    	
+    	Keyword reserveK = new Keyword("discount", 5);
+    	
+    	for(Keyword keyword : keywords){
+    		score += counter.countKeyword(keyword.name) * keyword.weight +
+    				 counter.countKeyword(reserveK.name) * keyword.weight;
+    	}
+    	return score;
+    }
+}
